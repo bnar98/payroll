@@ -82,7 +82,7 @@
 									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> پرۆفایلەکەم</a>
                                 </li>
                                 <li>
-									<a role="menuitem" tabindex="-1" href="lock-screen.html"><i class="fa fa-lock"></i> داخستنی کاتی</a>
+									<a role="menuitem" tabindex="-1" href="lock-screen.php"><i class="fa fa-lock"></i> داخستنی کاتی</a>
 								</li>
 								
 								<li>
@@ -100,7 +100,7 @@
 				<!-- start: sidebar -->
 				
 
-				<aside  class="sidebar-left" id="myDIV">
+				<aside  class="sidebar-left" id="sidebar">
 					<div class="sidebar-header" >
 						
 						
@@ -113,23 +113,29 @@
 						<div class="nano-content">
 							<nav id="menu" class="nav-main" role="navigation">
 								<ul class="nav nav-main">
-									<li class="nav-active" id="menu-li">
+									<li class="nav-active" id="employee-li">
 										<a href="#" id="employs">
-											<i class="fa fa-home" aria-hidden="true" id="manu-icon"></i>
-											<span id="menu-name">کارمەندەکان</span>
+											<i class="fa fa-users" aria-hidden="true" id="employee-icon"></i>
+											<span id="employee-name">کارمەندەکان</span>
 										</a>
 									</li>
 
-                                    <li class="nav-active" id="menu-li">
+                                    <li class="nav-active" id="user-li">
 										<a href="#" id="users">
-											<i class="fa fa-home" aria-hidden="true" id="manu-icon"></i>
-											<span id="menu-name">بەکارهێنەرەکان</span>
+											<i class="fa fa-user" aria-hidden="true" id="user-icon"></i>
+											<span id="user-name">بەکارهێنەرەکان</span>
 										</a>
 									</li>
-                                    <li class="nav-active" id="menu-li">
+                                    <li class="nav-active" id="loc-li">
 										<a href="#" id="locations">
-											<i class="fa fa-home" aria-hidden="true" id="manu-icon"></i>
-											<span id="menu-name">شوێنەکان</span>
+											<i class="fa fa-location-arrow" aria-hidden="true" id="loc-icon"></i>
+											<span id="loc-name">شوێنەکان</span>
+										</a>
+									</li>
+									<li class="nav-active" id="pers-li">
+										<a href="#" id="perentage">
+											<i class="fa fa-stack-exchange" aria-hidden="true" id="pers-icon"></i>
+											<span id="pers-name">ڕێژەکان</span>
 										</a>
 									</li>
 									

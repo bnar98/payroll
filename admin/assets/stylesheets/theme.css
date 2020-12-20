@@ -48,6 +48,9 @@ a:active {
 	right: 0;
 	top: 0;
 }
+.nav-main ul{
+	margin-top: 30px;
+}
 
 /* Layout Base - Inner Wrapper */
 .inner-wrapper {
@@ -3598,6 +3601,10 @@ label.error {
 	display: block;
 	content: '';
 }
+.form-group{
+
+	padding-top: 30px;
+}
 
 .form-group:last-child, .form-group:last-of-type {
 	margin-bottom: 0;
@@ -5498,6 +5505,9 @@ html.header-dark .userbox .dropdown-menu a {
 	+ .panel {
 		margin-top: 35px;
 	}*/;
+}
+.panel .panel-body .add-btn button{
+	float:left; margin-bottom:30px;
 }
 
 .panel-heading {

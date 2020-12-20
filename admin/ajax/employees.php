@@ -4,25 +4,6 @@ SESSION_START();
     header('Location:../index.php');
   }else{
     ?>
-    <div class="add_employee" id="add_employee" style="display:none">
-      <form class="add_employee" method="post" id="up_form">
-        <input type="text" name="name" placeholder="Name" id="name">
-        <input type="number" name="dgree" placeholder="Dgree" id="dgree">
-        <input type="number" name="main_salary" placeholder="Main Salary" id="main_salary">
-        <input type="number" name="child" placeholder="Number Of Child" id="child">
-        <input type="number" name="wife" placeholder="Wife" id="wife">
-        <input type="text" name="certificate" placeholder="certificate" id="certificate">
-        <input type="number" name="dgree_fund" placeholder="Dgree Fund" id="dgree_fund">
-        <input type="text" name="Special_fund" placeholder="Special Fund" id="special_fund">
-        <input type="text" name="Dengrouse_fund" placeholder="Dengrouse Fund" id="dengrouse_fund">
-        <input type="text" name="Careere_fund" placeholder="Careere Fund" id="careere_fund">
-        <input type="text" name="engineering_fund" placeholder="Engineering Fund" id="engineering_fund">
-        <input type="text" name="Contract_employee" placeholder="Contract Employee" id="contract_employee">
-        <input type="text" name="Job_Title" placeholder="Job Title" id="job_title">
-        <input type="submit" name="" value="Add" id="add_employ_btn">
-      </form>
-    </div>
-    <button type="button" name="button" id="form_toggle">Add Employee</button>
     <?php
     include('../../config.php');
     $qu=mysqli_query($con,"SELECT * FROM `employee_info` ORDER BY employee_id DESC");
@@ -38,16 +19,16 @@ SESSION_START();
 							</header>
 							<div class="panel-body">
 								<div class="row">
-									<div class="col-sm-6">
+									<div class="col-sm-6 add-btn">
 										<div class="mb-md" >
-											<button style="float:left; margin-bottom:30px;" id="addToTable" class="btn btn-primary"  data-toggle="modal" data-target="#add-employee">زیادکردنی کارمەند <i class="fa fa-plus"></i></button>
+											<button  id="addToTable" class="btn btn-primary"  data-toggle="modal" data-target="#add-employee">زیادکردنی کارمەند <i class="fa fa-plus"></i></button>
 										</div>
 									</div>
 								</div>
 								<table class="table table-bordered table-striped mb-none" id="datatable-editable">
 									<thead >
 										<tr >
-											<th >ناوی کارمەندو</th>
+											<th >ناوی کارمەند</th>
 											<th>ناونیشانی وەزیفی</th>
 											<th>شار</th>
                       <th>موچەی بنەڕەتی</th>
@@ -64,8 +45,8 @@ SESSION_START();
           <td><?php echo $employs['City'] ?></td>
           <td><?php echo $employs['Mian_salary'] ?></td>
           <td class="actions">
-					<a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-					<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+					<a href="#" data-toggle="modal" data-target="#edit-employee-modal" class="on-default" class="on-default "><i class="fa fa-pencil"></i></a>
+					<a href="#" data-toggle="modal" data-target="#modaldelete" class="on-default"><i class="fa fa-trash-o"></i></a>
 						</td>        </tr>
         <?php
       }
@@ -80,11 +61,11 @@ SESSION_START();
     
     </div>
             </section>
-  <div class="modal fade" id="add-employee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="add-employee" tabindex="-1" role="dialog" aria-labelledby="add-employess-modal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">زیادکردنی کارمەند</h5>
+        <h5 class="modal-title" id="add-employess-modal">زیادکردنی کارمەند</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float:left; margin-top:-20px;">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -98,14 +79,14 @@ SESSION_START();
                   <div class="col-sm-6">
 											<div class="form-group">
 												<label class="control-label">ناونیشانی وەزیفی</label>
-                        <input type="text" name="dgree" placeholder="ناوی بەکارهێنەر" id="username" class="form-control">
+                        <input type="text"name="Job_Title" placeholder="ناونیشانی وەزیفی " id="job_title" class="form-control">
 											</div>
 										</div>
 									
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label class="control-label">ناوی کارمەند</label>
-                        <input type="text" name="dgree" placeholder="ناوی بەکارهێنەر" id="username" class="form-control">
+                        <input type="text"  name="name" placeholder="ناوی کارمەند" id="name" class="form-control">
 											</div>
 										</div>
                   </div>
@@ -116,9 +97,9 @@ SESSION_START();
 												<label class="control-label">بڕوانامەی کارمەند</label>
                         
 												
-						            	<select class="form-control" id="role">
-                            <option value="admin" selected>بێ بڕوانامە</option>
-                            <option value="manager" selected>دبلۆم</option>
+						            	<select class="form-control" id="certificate">
+                            <option value="diploma " selected>دبلۆم</option>
+                            <option value="bachelor " >بەکالۆریەس</option>
 
 													
 													</select>
@@ -130,9 +111,9 @@ SESSION_START();
                       <label class="control-label">باری خێزانی کارمەند</label>
                         
 												
-                        <select class="form-control" id="role">
-                          <option value="admin" selected>سەلت</option>
-                          <option value="manager" selected>هاوسەردار</option>
+                        <select class="form-control" id="wife">
+                          <option value="no" selected>سەلت</option>
+                          <option value="yes" >هاوسەردار</option>
 
                         
                         </select>
@@ -144,7 +125,7 @@ SESSION_START();
                      <div class="col-sm-3">
                         <div class="form-group">
                           <label class="control-label">   ژمارەی منداڵ</label>
-                          <input type="text" name="dgree" placeholder="ناوی بەکارهێنەر" id="username" class="form-control">
+                          <input type="text" name="child" placeholder=" ژمارەی منداڵ" id="child" class="form-control">
                         </div>
                         
                       </div>
@@ -152,14 +133,14 @@ SESSION_START();
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label class="control-label"> پلەی کارمەند</label>
-                          <input type="text" name="dgree" placeholder="ناوی بەکارهێنەر" id="username" class="form-control">
+                          <input type="text"  name="dgree" placeholder="پلەی کارمەند" id="dgree" class="form-control">
                         </div>
                         
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label class="control-label"> موچەی بنەڕەتی</label>
-                          <input type="number" name="dgree" placeholder="ناوی بەکارهێنەر" id="username" class="form-control">
+                          <input type="number" name="main_salary" placeholder=" موچەی بنەڕەتی" id="main_salary" class="form-control">
                         </div>
                       </div>
 
@@ -174,8 +155,8 @@ SESSION_START();
                           <div class="col-sm-3">
                             
                             <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
+                          <input class="form-check-input" type="checkbox" value="yes" id="dgree_fund">
+                          <label class="form-check-label" for="dgree_fund">
                             دەرماڵەی پایە
                           </label>
                         </div>
@@ -183,8 +164,8 @@ SESSION_START();
 
                       <div class="col-sm-3">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
+                          <input class="form-check-input" type="checkbox" value="yes" id="special_fund">
+                          <label class="form-check-label" for="special_fund">
                            دەرماڵەی تایبەت
                           </label>
                         </div>
@@ -192,8 +173,8 @@ SESSION_START();
 
                       <div class="col-sm-3">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
+                          <input class="form-check-input" type="checkbox" value="yes" id="dengrouse_fund">
+                          <label class="form-check-label" for="dengrouse_fund">
                             دەرماڵەی مەترسی
                           </label>
                         </div>
@@ -205,8 +186,8 @@ SESSION_START();
                       <div class="col-sm-3">
                         
                         <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
+                      <input class="form-check-input" type="checkbox" value="yes" id="engineering_fund">
+                      <label class="form-check-label" for="engineering_fund">
                         دەرماڵەی هەندەسە
                       </label>
                     </div>
@@ -214,35 +195,210 @@ SESSION_START();
 
                   <div class="col-sm-5">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
-                       ئایە کارمەند بە شێوەی گرێبەست دامەزراوە؟
+                      <input class="form-check-input" type="checkbox" value="yes" id="careere_fund">
+                      <label class="form-check-label" for="careere_fund">
+                       دەرماڵەی پیشەیی
                       </label>
-                    </div>
-                  </div>
+                    </div> </div></div></div></div></div>
 
-                 
-                </div>
-                        
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label class="control-label">جۆری دامەزراندنی کارمەند</label>
+                            <select class="form-control" id="contract_employee">
+                              <option value="no " selected>کارمەند بە شێوەی هەمیشەیی دامەزراوە</option>
+                              <option value="yes " >کارمەند بە شێوەی گرێبەست دامازراوە</option>
+                            </select>
+                          </div></div></div></div></div>
 
-								</div>
-							</div>
-							</section>
-						</div>
-      </div>
-      <div class="modal-footer">
+              <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">لابردن</button>
         <input type="submit" class="btn btn-primary" name="" value="زیادکردن" id="add_employ_btn">
 
-        
-      </div>
+      </div></div></div></div></section>
+
+
+
+
+      <div id="modaldelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="float: left;">&times;</button>
+                    <h4 class="modal-title" style="text-align-last: center">سرینەوەی کارمەند</h4>
+                </div>
+                <div class="modal-body">
+
+                  <h3>دڵنیای لە سڕینەوەی ناوی کارمەند؟؟</h3>
+    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">بەڵێ</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">نەخێر</button>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
+    <div class="modal fade" id="edit-employee-modal" tabindex="-1" role="dialog" aria-labelledby="add-employess-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="add-employess-modal">گۆرانکاری لە زانیاریەکانی کارمەند</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float:left; margin-top:-20px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <div class="">
+                  <section class="panel">
+                  
+                    <div class="panel-body">
+                      <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                            <label class="control-label">ناونیشانی وەزیفی</label>
+                            <input type="text"name="Job_Title" placeholder="ناونیشانی وەزیفی " id="job_title" class="form-control">
+                          </div>
+                        </div>
+                      
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label class="control-label">ناوی کارمەند</label>
+                            <input type="text"  name="name" placeholder="ناوی کارمەند" id="name" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label class="control-label">بڕوانامەی کارمەند</label>
+                            
+                            
+                              <select class="form-control" id="certificate">
+                                <option value="diploma " selected>دبلۆم</option>
+                                <option value="bachelor " >بەکالۆریەس</option>
+    
+                              
+                              </select>
+                            
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                          <label class="control-label">باری خێزانی کارمەند</label>
+                            
+                            
+                            <select class="form-control" id="wife">
+                              <option value="no" selected>سەلت</option>
+                              <option value="yes" >هاوسەردار</option>
+    
+                            
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                         <div class="col-sm-3">
+                            <div class="form-group">
+                              <label class="control-label">   ژمارەی منداڵ</label>
+                              <input type="text" name="child" placeholder=" ژمارەی منداڵ" id="child" class="form-control">
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="col-sm-3">
+                            <div class="form-group">
+                              <label class="control-label"> پلەی کارمەند</label>
+                              <input type="text"  name="dgree" placeholder="پلەی کارمەند" id="dgree" class="form-control">
+                            </div>
+                            
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label"> موچەی بنەڕەتی</label>
+                              <input type="number" name="main_salary" placeholder=" موچەی بنەڕەتی" id="main_salary" class="form-control">
+                            </div>
+                          </div>
+    
+                          </div>
+                          <div class="row">
+                           
+                            <div class="">
+                          <div class="form-group">
+                            <label class="control-label"> ئەو دەرماڵانەی کارمەند ئەیگرێتەوە</label>
+                            <div class="row">
+                              
+                              <div class="col-sm-3">
+                                
+                                <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="yes" id="dgree_fund">
+                              <label class="form-check-label" for="dgree_fund">
+                                دەرماڵەی پایە
+                              </label>
+                            </div>
+                          </div>
+    
+                          <div class="col-sm-3">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="yes" id="special_fund">
+                              <label class="form-check-label" for="special_fund">
+                               دەرماڵەی تایبەت
+                              </label>
+                            </div>
+                          </div>
+    
+                          <div class="col-sm-3">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="yes" id="dengrouse_fund">
+                              <label class="form-check-label" for="dengrouse_fund">
+                                دەرماڵەی مەترسی
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="row">
+                              
+                          <div class="col-sm-3">
+                            
+                            <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="yes" id="engineering_fund">
+                          <label class="form-check-label" for="engineering_fund">
+                            دەرماڵەی هەندەسە
+                          </label>
+                        </div>
+                      </div>
+    
+                      <div class="col-sm-5">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="yes" id="careere_fund">
+                          <label class="form-check-label" for="careere_fund">
+                           دەرماڵەی پیشەیی
+                          </label>
+                        </div> </div></div></div></div></div>
+    
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <label class="control-label">جۆری دامەزراندنی کارمەند</label>
+                                <select class="form-control" id="contract_employee">
+                                  <option value="no " selected>کارمەند بە شێوەی هەمیشەیی دامەزراوە</option>
+                                  <option value="yes " >کارمەند بە شێوەی گرێبەست دامازراوە</option>
+                                </select>
+                              </div></div></div></div></div>
+    
+                  <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">لابردن</button>
+            <input type="submit" class="btn btn-primary" name="" value="گۆڕانکاری" id="">
+    
+          </div></div></div></div>
+
+
     <script type="text/javascript">
       $("#up_form").submit(function(e){
           return false;

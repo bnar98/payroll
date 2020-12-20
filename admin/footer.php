@@ -1,26 +1,56 @@
 </section>
 <script>function myFunction() {
-			var x = document.getElementById("myDIV");
-			var y = document.getElementById("menu-name");
-			
-			var z = document.getElementById("manu-icon");
-			var b = document.getElementById("menu-li");
+			var sidebar = document.getElementById("sidebar");
+			var employeeName = document.getElementById("employee-name");
+			var emploeeIcon = document.getElementById("employee-icon");
+			var userName = document.getElementById("user-name");
+			var userIcon = document.getElementById("user-icon");
+			var locName = document.getElementById("loc-name");
+			var locIcon = document.getElementById("loc-icon");
+			var persName = document.getElementById("pers-name");
+			var persIcon = document.getElementById("pers-icon");
+
+			var employeeLi = document.getElementById("employee-li");
+			var userLi = document.getElementById("user-li");
+			var locLi = document.getElementById("loc-li");
+			var persLi = document.getElementById("pers-li");
 
 			
-			if (y.style.display === "none") {
+			if (employeeName.style.display === "none") {
 			
-			  x.style.width="300px";
-			  y.style.display="inline";
-			 z.style.fontSize="20px";
-			 b.style.marginRight="0px";
+				sidebar.style.width="300px";
+				employeeName.style.display="inline";
+			   emploeeIcon.style.fontSize="20px";
+			   userName.style.display="inline";
+			   userIcon.style.fontSize="20px";
+			   
+			 employeeLi.style.marginRight="0px";
+			 userLi.style.marginRight="0px";
+			 locLi.style.marginRight="0px";
+			 persLi.style.marginRight="0px";
+
+			 locName.style.display="inline";
+			 locIcon.style.fontSize="20px";
+			 persName.style.display="inline";
+			   userIcon.style.fontSize="20px";
 
 			  
 
 			} else {
-			 x.style.width="100px";
-			 y.style.display="none";
-			 z.style.fontSize="30px";
-			b.style.marginRight="-35px";
+				sidebar.style.width="80px";
+				employeeName.style.display="none";
+				userIcon.style.fontSize="25px";
+				persName.style.display="none";
+				emploeeIcon.style.fontSize="25px";
+				employeeLi.style.marginRight="-50px";
+				userLi.style.marginRight="-50px";
+				locLi.style.marginRight="-50px";
+				persLi.style.marginRight="-50px";
+
+			locName.style.display="none";
+			locIcon.style.fontSize="25px";
+			 userName.style.display="none";
+			 persIcon.style.fontSize="25px";
 
 
 			 
