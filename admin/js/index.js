@@ -22,3 +22,11 @@ $("#locations").click(()=>{
     }
   });
 });
+$("#perentage").click(()=>{
+  $.ajax({
+    url:"ajax/perentage.php",
+    success:function(dat){
+      $("#root").html(dat);
+    }
+  });
+});
