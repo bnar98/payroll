@@ -1,7 +1,7 @@
 <?php
 $hos="localhost";
 $usr="root";
-$pass="rrroottt";
+$pass="";
 $db="payrollmangmmentsystem";
 $con=mysqli_connect($hos,$usr,$pass,$db);
 if(!$con){
